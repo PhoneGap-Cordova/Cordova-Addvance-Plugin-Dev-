@@ -1,0 +1,33 @@
+repositories {
+	
+        mavenCentral();
+        maven {
+            url "https://s3-ap-southeast-1.amazonaws.com/axis-upi-release/"
+        }
+
+        jcenter()
+	flatDir{
+      dirs 'libs'
+   }
+}
+
+
+dependencies {
+   
+    compile ('axis-upi:app:0.0.6')
+	compile(name:'golib', ext:'aar')
+	compile ('com.android.support:appcompat-v7:24.1.1')
+
+}
+
+android {
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 24
+    }
+
+   packagingOptions {
+       exclude 'META-INF/NOTICE'
+       exclude 'META-INF/LICENSE'
+   }
+}

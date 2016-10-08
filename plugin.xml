@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com-go-axces"
+        version="0.7.0">
+
+  <name>Axces</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/axces.js" target="js/axces.js"/>
+
+  <js-module src="www/axces.js" name="axces">
+    <clobbers target="axces" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Axces">
+        <param name="android-package" value="com.go.axces.Axces"/>
+      </feature>
+    </config-file>
+	<framework src="build-extras.gradle" custom="true" type="gradleReference" /> 
+    <source-file src="src/android/Axces.java" target-dir="src/com/go/axces/"/>
+	<source-file src="src/android/golib.aar" target-dir="libs/" />
+	
+	<config-file target="AndroidManifest.xml" parent="/manifest">
+		    <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+            <uses-permission android:name="android.permission.SEND_SMS" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-feature android:name="android.hardware.telephony" android:required="false" />
+    </config-file>
+	  
+  </platform>
+
+</plugin>
